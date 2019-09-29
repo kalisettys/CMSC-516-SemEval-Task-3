@@ -1,4 +1,3 @@
-
 import csv
 import pandas as pd
 import spacy
@@ -38,7 +37,7 @@ data2['clean_context2'] = data2['context2'].apply(lambda x: ''.join(ch for ch in
 
 
 data2['clean_context1'] = data2['clean_context1'].str.lower()
-data2['clean_context2'] = data2['clean_context]2'].str.lower()
+data2['clean_context2'] = data2['clean_context2'].str.lower()
 
 print(data2['clean_context1'])
 
@@ -70,14 +69,11 @@ nlp = spacy.load('en', disable=['parser', 'ner'])
 
 # function to lemmatize text
 def lemmatization(texts):
-    output = []
-    for i in texts:
-        s = [token.lemma_ for token in nlp(i)]
-        output.append(' '.join(s))
-    return output
-
-
-
+    output = []
+    for i in texts:
+        s = [token.lemma_ for token in nlp(i)]
+        output.append(' '.join(s))
+    return output
 
 
 
@@ -86,22 +82,21 @@ data2['clean_context1'] = lemmatization(data2['clean_context1'])
 data2['clean_context2'] = lemmatization(data2['clean_context2'])
 
 
-
 import os, ssl
 if (not os.environ.get('PYTHONHTTPSVERIFY', '') and
-    getattr(ssl, '_create_unverified_context', None)):
-    ssl._create_default_https_context = ssl._create_unverified_context
+    getattr(ssl, '_create_unverified_context', None)):
+    ssl._create_default_https_context = ssl._create_unverified_context
 
 elmo = hub.Module("https://tfhub.dev/google/elmo/2", trainable=True)
 print(data2.sample(3))
 def elmo_vectors(x):
-  embeddings = elmo(x.tolist(), signature="default", as_dict=True)["elmo"]
+  embeddings = elmo(x.tolist(), signature="default", as_dict=True)["elmo"]
 
-  with tf.Session() as sess:
-    sess.run(tf.global_variables_initializer())
-    sess.run(tf.tables_initializer())
-    # return average of ELMo features
-    return sess.run(tf.reduce_mean(embeddings,1))
+  with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    sess.run(tf.tables_initializer())
+    # return average of ELMo features
+    return sess.run(tf.reduce_mean(embeddings,1))
 
 list_train = [data2[i:i+100] for i in range(0,data2.shape[0],100)]
 
@@ -120,3 +115,10 @@ pickle_out.close()
 pickle_out2 = open("elmo_train2_03032019.pickle","wb")
 pickle.dump(elmo_train_new2, pickle_out2)
 pickle_out.close()
+
+pickle_in = open("elmo_train_03032019.pickle", "rb")
+elmo_train_new = pickle.load(pickle_in)
+
+# load elmo_train_new
+pickle_in2 = open("elmo_train2_03032019.pickle", "rb")
+elmo_test_new2 = pickle.load(pickle_in2)
