@@ -8,8 +8,8 @@ spacy_nlp_parser = spacy.load('en', disable=['parser', 'ner'])
 from allennlp.commands.elmo import ElmoEmbedder
 
 def main():
-    ######## Input Data
-    initial_data = pd.read_csv('trial_data.csv')
+    # Input Data
+    initial_data = pd.read_csv('data2.csv')
 
     ##converting data to dataframe using pandas
     data_df = pd.DataFrame(initial_data)
@@ -60,7 +60,7 @@ def cleaning_data(data_df):
 
     return data_df
 
-#### text lemmatization = a form of normalization in text
+#### Text lemmatization = a form of normalization in text
 def lemmatizeText(textual_data):
     output = []
     for i in textual_data:
@@ -120,7 +120,7 @@ def elmo_Model(total_samples, data_df):
         tokens2 = words_context2[i]
         vectors2 = elmo_embeddingModel.embed_sentence(tokens2)
 
-        ##### 3 corresponds to the total number of layers in the elmo model (1 for each layer)
+        # 3 corresponds to the total number of layers in the elmo model (1 for each layer)
         assert (len(vectors2) == 3)
         assert (len(vectors2[0]) == len(tokens2))
 
