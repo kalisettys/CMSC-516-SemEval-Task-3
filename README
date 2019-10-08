@@ -20,12 +20,13 @@ Programming Language used: Python
 Introduction ::: Introducing the problem:
 -----------------------------------------
 
-Our task is to compute the similarity of two pairs of words that occur together within different contexts and in addition study how the effect of a particular
-context plays a role in the similarity score.
+Our task is to compute the similarity of two pairs of words that occur together within different contexts and in addition study how the effect of a particular context plays a role in the similarity score.
 
 Goal: to build embedding models that predict the effect context has on the human predicted scores.
 
-This is an unsupervised task, so there will be no training & testing data to perform the validation methods. 
+This is an unsupervised task, so there will be no training & testing data available to perform the validation methods. 
+
+Evaluation: Spearman's Correlation against the human annotated scores (gold-standard data)
 
 
 
