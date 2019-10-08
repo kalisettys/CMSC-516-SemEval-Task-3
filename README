@@ -1,0 +1,64 @@
+								CMSC 516: SemEval Task #3: Predicting the (Graded) Effect of Context on Word Similarity 
+								----------------------------------------------------------------------------------------
+												Authors: Tianchi Zhang, Keshma Rathod, Shilpa Kalisetty
+												-------------------------------------------------------
+															Professor: Dr.Bridget McInnes
+															-----------------------------
+														   		 October 8th, 2019
+														   		 -----------------
+																 README FILE REPORT
+																 ------------------
+----------------------------------
+Programming Language used: Python
+----------------------------------
+
+------------------------
+Introduction ::: Introducing the problem:
+------------------------
+
+Our task is to compute the similarity of two pairs of words that occur together within different contexts and in addition study how the effect of a particular
+context plays a role in the similarity score.
+
+Goal: to build embedding models that predict the effect context has on the human predicted scores.
+
+This is an unsupervised task, so there will be no training & testing data to perform the validation methods. 
+
+
+
+------------------------
+Examples of the problem:
+------------------------
+
+
+
+
+-------------------------------------
+Class specific (roles of each member):
+-------------------------------------
+Tianchi: 
+- CODE: Elmo_model (including cosine similarity), lemmatizeText
+- Dependency File
+
+
+Keshma:
+- CODE: Cleaning data (removing numbers, punctuation, lowercase), lemmatization
+- Runit.sh & Installation file
+
+Shilpa:
+- IN CODE: Main(), CorrelationMethod, Plotting 
+- ReadMe File Report
+
+
+-----------------------
+Implementation Overview
+-----------------------
+
+First Embedding Model Implemented: 
+
+ - elMo Word Embedding Model in Python
+
+
+Similarity Score used: Cosine Distance 
+-> To get cosine similarity measure = we computed (1 - cosine distance)
+
+Correlation method(specified by Task Organizers): Spearman's Correlation
