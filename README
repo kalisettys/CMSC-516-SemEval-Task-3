@@ -10,31 +10,47 @@ README FILE REPORT
 ------------------
 
 
+
 ----------------------------------
 Programming Language used: Python
 ----------------------------------
 
-
-
 -----------------------------------------
 Introduction ::: Introducing the problem:
 -----------------------------------------
+What words mean is highly influenced by the surrounding contexts in which the two pairs of words co-occur together in a given sentence. The two pair of words occurring in different contexts usually carry different senses. It is important to identify and distinguish the differences between the words relatedness and similarity. 
 
-Our task is to compute the similarity of two pairs of words that occur together within different contexts and in addition study how the effect of a particular context plays a role in the similarity score.
+Our task is to compute the similarity between the two pairs of words that occur together within different contexts and in addition study how the effect of a particular context plays a role in the similarity score.
 
 Goal: to build embedding models that predict the effect context has on the human predicted scores.
+----
 
 This is an unsupervised task, so there will be no training & testing data available to perform the validation methods. 
 
-Evaluation: Spearman's Correlation against the human annotated scores (gold-standard data)
+Evaluation: Spearman's Correlation against the human annotated scores (gold-standard data) ----- (specified by Task Organizers)
 
 
 
 ------------------------
-Examples of the problem:
+Example of the problem:
 ------------------------
 
+(From Codalab):
 
+Given data: two pair of words, two contexts, simlex score
+
+---EXAMPLE 1----
+Two pair of words: Room and Cell 
+
+Context 1: 
+Her prision cell was almost an improvement over her room at the last hostel.
+
+
+Context 2
+His job as a biologist didn't leave much room for a personal life. He knew much more about human cells than about human feelings.
+
+
+==> We can see that Room & Cell in Context 1 carries a different meaning vs. in Context 2. Additionally, 'Room' & 'Cell' individually carried distinct meanings in the same contexts, for instance in Context 2. 
 
 
 -------------------------------------
@@ -44,9 +60,8 @@ Tianchi:
 - CODE: Elmo_model (including cosine similarity), lemmatizeText
 - Dependency File
 
-
 Keshma:
-- CODE: Cleaning data (removing numbers, punctuation, lowercase), lemmatization
+- CODE: Main(), Cleaning data (removing numbers, punctuation, lowercase), lemmatization
 - Runit.sh & Installation file
 
 Shilpa:
@@ -54,16 +69,12 @@ Shilpa:
 - ReadMe File Report
 
 
------------------------
-Implementation Overview
------------------------
+------------------------------
+Implementation Brief Overview
+------------------------------
 
-First Embedding Model Implemented: 
+- First Embedding Model Implemented:  elMo Word Embedding Model in Python
 
- - elMo Word Embedding Model in Python
+- Similarity Score used: Cosine Distance      
+     -> To get cosine similarity measure = we computed (1 - cosine distance)
 
-
-Similarity Score used: Cosine Distance 
--> To get cosine similarity measure = we computed (1 - cosine distance)
-
-Correlation method(specified by Task Organizers): Spearman's Correlation
