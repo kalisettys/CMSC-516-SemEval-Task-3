@@ -1,20 +1,24 @@
-								CMSC 516: SemEval Task #3: Predicting the (Graded) Effect of Context on Word Similarity 
-								----------------------------------------------------------------------------------------
-												Authors: Tianchi Zhang, Keshma Rathod, Shilpa Kalisetty
-												-------------------------------------------------------
-															Professor: Dr.Bridget McInnes
-															-----------------------------
-														   		 October 8th, 2019
-														   		 -----------------
-																 README FILE REPORT
-																 ------------------
+CMSC 516: SemEval Task #3: Predicting the (Graded) Effect of Context on Word Similarity 
+----------------------------------------------------------------------------------------
+Authors: Tianchi Zhang, Keshma Rathod, Shilpa Kalisetty
+-------------------------------------------------------
+Professor: Dr.Bridget McInnes
+-----------------------------
+October 8th, 2019
+-----------------
+README FILE REPORT
+------------------
+
+
 ----------------------------------
 Programming Language used: Python
 ----------------------------------
 
-------------------------
+
+
+-----------------------------------------
 Introduction ::: Introducing the problem:
-------------------------
+-----------------------------------------
 
 Our task is to compute the similarity of two pairs of words that occur together within different contexts and in addition study how the effect of a particular
 context plays a role in the similarity score.
