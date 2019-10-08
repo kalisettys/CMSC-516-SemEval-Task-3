@@ -2,6 +2,7 @@ import pandas as pd
 import spacy
 import scipy
 from scipy.stats import spearmanr
+import sys
 
 spacy_nlp_parser = spacy.load('en', disable=['parser', 'ner'])
 
@@ -9,7 +10,8 @@ from allennlp.commands.elmo import ElmoEmbedder
 
 def main():
     # Input Data
-    initial_data = pd.read_csv('data2.csv')
+    file_name=sys.argv[0]
+    initial_data = pd.read_csv(file_name)
 
     ##converting data to dataframe using pandas
     data_df = pd.DataFrame(initial_data)
