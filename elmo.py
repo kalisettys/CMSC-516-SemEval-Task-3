@@ -2,6 +2,7 @@ import pandas as pd
 import spacy
 import scipy
 from scipy.stats import spearmanr
+
 import sys
 from matplotlib.pylab import plt
 
@@ -9,6 +10,8 @@ spacy_nlp_parser = spacy.load('en', disable=['parser', 'ner'])
 
 from allennlp.commands.elmo import ElmoEmbedder
 
+
+##SHILPA KALISETTY, KESHMA RATHOD
 def main():
     # Input Data
     file_name=sys.argv[1]
@@ -31,10 +34,12 @@ def main():
     spearman_value, p_value = correlationMethod(diff)
     print("-------- Spearman Correlation ------")
     print(spearman_value)
+
     print("-------- P Value --------")
     print(p_value)
     plotting(sim_context1,sim_context2,diff,data_df,total_samples)
 
+#### KESHMA RATHOD
 def cleaning_data(data_df):
     #Removing punctuation
     punctuation = '!"#$%&()*+-/:;<=>?@[\\]^_`{|}~.,'
@@ -64,6 +69,7 @@ def cleaning_data(data_df):
 
     return data_df
 
+#TIANCHI ZHANG
 #### Text lemmatization = a form of normalization in text
 def lemmatizeText(textual_data):
     output = []
@@ -72,7 +78,7 @@ def lemmatizeText(textual_data):
         output.append(' '.join(s))
     return output
 
-
+## SHILPA KALISETTY
 def Lemmatization(data_df):
     data_df['clean_context1'] = lemmatizeText(data_df['clean_context1'])
     data_df['clean_context2'] = lemmatizeText(data_df['clean_context2'])
@@ -80,6 +86,8 @@ def Lemmatization(data_df):
     data_df['clean_word2'] = lemmatizeText(data_df['clean_word2'])
     return data_df
 
+
+### TIANCHI ZHANG
 def elmo_Model(total_samples, data_df):
 
     words_context1 = [[] for _ in range(total_samples)]
@@ -134,7 +142,7 @@ def elmo_Model(total_samples, data_df):
 
     return difference, similarityScore_context1, similarityScore_context2
 
-
+## SHILPA KALISETTY
 def correlationMethod(diff):
     gold_data = pd.read_csv(sys.argv[2])
     gold_df = pd.DataFrame(gold_data)
@@ -142,6 +150,8 @@ def correlationMethod(diff):
     spearman_value, p_value = spearmanr(diff, gold_standard_scores)
     return spearman_value, p_value
 
+
+## SHILPA KALISETTY
 def plotting(sim_context1,sim_context2,diff,data_df,total_samples):
 
     plt.plot(sim_context1,label="Context 1")
@@ -158,7 +168,7 @@ def plotting(sim_context1,sim_context2,diff,data_df,total_samples):
     for wp in range (total_samples):
         xlabels[wp] = x_labels_word1[wp]+ "\n"+x_labels_word2[wp]
         xticks_x[wp] = wp+1
-    
+
     plt.plot(diff,label="Difference")
 
     plt.legend(loc='center right')
