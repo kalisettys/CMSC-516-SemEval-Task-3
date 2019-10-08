@@ -61,7 +61,7 @@ Tianchi:
 - Dependency File
 
 Keshma:
-- CODE: Main(), Cleaning data (removing numbers, punctuation, lowercase), lemmatization
+- CODE: Main(), Cleaning data, lemmatization
 - Runit.sh & Installation file
 
 Shilpa:
