@@ -3,6 +3,7 @@ import spacy
 import scipy
 from scipy.stats import spearmanr
 import sys
+from matplotlib.pylab import plt
 
 spacy_nlp_parser = spacy.load('en', disable=['parser', 'ner'])
 
@@ -10,7 +11,7 @@ from allennlp.commands.elmo import ElmoEmbedder
 
 def main():
     # Input Data
-    file_name=sys.argv[0]
+    file_name=sys.argv[1]
     initial_data = pd.read_csv(file_name)
 
     ##converting data to dataframe using pandas
@@ -32,6 +33,7 @@ def main():
     print(spearman_value)
     print("-------- P Value --------")
     print(p_value)
+    plotting(sim_context1,sim_context2,diff)
 
 def cleaning_data(data_df):
     #Removing punctuation
@@ -134,12 +136,29 @@ def elmo_Model(total_samples, data_df):
 
 
 def correlationMethod(diff):
-    gold_data = pd.read_csv('gold_en.csv')
+    gold_data = pd.read_csv(sys.argv[2])
     gold_df = pd.DataFrame(gold_data)
     gold_standard_scores = gold_df["diff"]
     spearman_value, p_value = spearmanr(diff, gold_standard_scores)
     return spearman_value, p_value
 
+def plotting(sim_context1,sim_context2,diff):
+    plt.plot(sim_context1,label="Context 1")
+    plt.plot(sim_context2,label="Context 2")
+    xticks_labels = ['way\nmanner', 'population\npeople', 'guilty\nashamed', 'happy\nyoung', 'friendly\ngenerous', 'task\nwoman', 'argue\nprove', 'bring\nrestore']
+    xticks_x = [1,2,3,4,5,6,7,8]
+    plt.plot(diff,label="Difference")
+
+    plt.legend(loc='center right')
+
+    # Add title and x, y labels
+    plt.title("Elmo Embedding Model Results", fontsize=16, fontweight='bold')
+
+    plt.xlabel("Word")
+    plt.ylabel("Similarity")
+
+    plt.xticks(xticks_x, xticks_labels, rotation='vertical')
+    plt.show()
 
 if __name__ == '__main__':
     main()
