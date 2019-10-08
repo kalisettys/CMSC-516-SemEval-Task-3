@@ -33,7 +33,7 @@ def main():
     print(spearman_value)
     print("-------- P Value --------")
     print(p_value)
-    plotting(sim_context1,sim_context2,diff)
+    plotting(sim_context1,sim_context2,diff,data_df,total_samples)
 
 def cleaning_data(data_df):
     #Removing punctuation
@@ -142,11 +142,23 @@ def correlationMethod(diff):
     spearman_value, p_value = spearmanr(diff, gold_standard_scores)
     return spearman_value, p_value
 
-def plotting(sim_context1,sim_context2,diff):
+def plotting(sim_context1,sim_context2,diff,data_df,total_samples):
+
     plt.plot(sim_context1,label="Context 1")
     plt.plot(sim_context2,label="Context 2")
-    xticks_labels = ['way\nmanner', 'population\npeople', 'guilty\nashamed', 'happy\nyoung', 'friendly\ngenerous', 'task\nwoman', 'argue\nprove', 'bring\nrestore']
-    xticks_x = [1,2,3,4,5,6,7,8]
+
+
+    x_labels_word1 = data_df["word1"]
+    x_labels_word2 = data_df["word2"]
+
+    xlabels = [0] * total_samples
+    xticks_x = [0] * total_samples
+
+
+    for wp in range (total_samples):
+        xlabels[wp] = x_labels_word1[wp]+ "\n"+x_labels_word2[wp]
+        xticks_x[wp] = wp+1
+    
     plt.plot(diff,label="Difference")
 
     plt.legend(loc='center right')
@@ -157,8 +169,9 @@ def plotting(sim_context1,sim_context2,diff):
     plt.xlabel("Word")
     plt.ylabel("Similarity")
 
-    plt.xticks(xticks_x, xticks_labels, rotation='vertical')
+    plt.xticks(xticks_x, xlabels)
     plt.show()
+
 
 if __name__ == '__main__':
     main()
