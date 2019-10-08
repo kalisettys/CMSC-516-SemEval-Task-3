@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python elmo2.py data2.csv gold_en.csv
+python elmo.py data_en.csv gold_en.csv
