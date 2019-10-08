@@ -1,0 +1,88 @@
+
+
+1. Install python3 from https://www.python.org/downloads/source/ for Linux
+
+2. Run the Dependencies.sh file to add all the dependencies related to our project. To run it in the command prompt(current      working directory should be where the Dependencies.sh file is located) type the following: sh Dependencies.sh
+
+3. The Dependencies.sh file installs the following dependencies on the command prompt with administrator rights:
+
+		curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+
+		python get-pip.py
+
+		pip install pandas
+
+		pip install spacy
+
+		pip install scipy
+
+		pip install matplotlib
+ 
+		install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+
+		If the above last line of code does not work, use the below install:
+		conda install pytorch=0.4.1 -c pytorch   ("With Anaconda Navigator" IDE)
+
+		pip install allennlp
+		
+4. Run the runit.sh in the command prompt by typing the following(.sh file should be in the current working directory):
+		chmod u+x runit.sh
+		sh runit.sh
+
+The runit.sh file runs the python file "elmo.py" by taking the "data_en.csv" file and "gold_en.csv" file as input parameters.
+
+The output will be displayed on the command prompt.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
