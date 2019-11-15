@@ -138,7 +138,7 @@ def elmo_Model(total_samples, data_df):
 
         similarityScore_context2[i] = 1 - scipy.spatial.distance.cosine(vectors2[2][word1_context2[i]], vectors2[2][word2_context2[i]])
 
-        difference[i] = similarityScore_context1[i] - similarityScore_context2[i]
+        difference[i] = similarityScore_context2[i] - similarityScore_context1[i]
 
     return difference, similarityScore_context1, similarityScore_context2
 
